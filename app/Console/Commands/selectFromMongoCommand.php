@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\PstEmail;
 use App\Models\PstEmailMongo;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class selectFromMongoCommand extends Command
 {
@@ -16,7 +17,7 @@ class selectFromMongoCommand extends Command
     {
 
         config(['database.connections.mongodb.database' => $this->argument('database') ]);
-
+        DB::reconnect();
         $emails = PstEmailMongo::get()->toArray();
         foreach($emails as $email){
             dd($email);
