@@ -137,8 +137,6 @@ class PstEmailMongoController extends Controller
                     }
                 }
             }
-
-
         }else{
             $input['tags'] = '';
         }
@@ -173,7 +171,7 @@ class PstEmailMongoController extends Controller
             }
         }
 
-        $emails = $email_query->orderBy('delivery_date','DESC')->limit()->get()->toArray();
+        $emails = $email_query->orderBy('delivery_date','DESC')->limit(5000)->get()->toArray();
         return response()->json(
             $emails
         );
