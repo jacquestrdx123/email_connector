@@ -14,10 +14,10 @@ class importToMongoCommand extends Command
 
     public function handle()
     {
-        $emails = PstEmail::get()->toArray();
+        $emails = PstEmail::get();
         foreach($emails as $email){
             $mongo_email = new PstEmailMongo();
-            $mongo_email->update($email);
+            $mongo_email->update($email->toArray());
             $mongo_email->save();
         }
     }
