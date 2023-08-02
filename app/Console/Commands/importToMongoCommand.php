@@ -23,8 +23,7 @@ class importToMongoCommand extends Command
             $emails = PstEmail::skip($offset)->take($batchSize)->get();
 
             foreach ($emails as $email) {
-                $mongo_email = new PstEmailMongo();
-                $mongo_email->update($email->toArray());
+                $mongo_email = PstEmailMongo::create($email->toArray());
                 $mongo_email->save();
             }
 
