@@ -32,6 +32,7 @@ class importToMongoCommand extends Command
                 foreach($attachments as $attachment){
                     $mongo_attachment = PstEmailAttachmentMongo::create($attachment->toArray());
                     $mongo_attachment->email_id = $mongo_email->email_id;
+                    $mongo_attachment->attachment_id = $attachment->id;
                     $mongo_attachment->save();
                 }
                 unset($attachments);
