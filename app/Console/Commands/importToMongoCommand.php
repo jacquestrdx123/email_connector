@@ -14,7 +14,7 @@ class importToMongoCommand extends Command
 
     public function handle()
     {
-        $emails = PstEmail::take(1000)->get()->toArray();
+        $emails = PstEmail::get()->toArray();
         foreach($emails as $email){
             $mongo_email = new PstEmailMongo();
             $mongo_email->update($email);
