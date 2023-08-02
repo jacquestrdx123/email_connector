@@ -173,7 +173,9 @@ class PstEmailMongoController extends Controller
         }
 
         $emails = $email_query->orderBy('delivery_date','DESC')->limit(5000)->get();
-        return response()->json($emails);
+        return response()->json([
+            "emails" => $emails
+        ]);
     }
 
     public function store(Request $request)
