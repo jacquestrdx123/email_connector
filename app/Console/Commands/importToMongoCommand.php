@@ -25,17 +25,9 @@ class importToMongoCommand extends Command
             $emails = PstEmail::skip($offset)->take($batchSize)->get();
 
             foreach ($emails as $email) {
-                $attachments = PstEmailAttachment::where('email_id',$email->id)->get();
                 $mongo_email = PstEmailMongo::create($email->toArray());
                 $mongo_email->email_id = $email->id;
                 $mongo_email->save();
-                foreach($attachments as $attachment){
-                    $mongo_attachment = PstEmailAttachmentMongo::create($attachment->toArray());
-                    $mongo_attachment->email_id = $mongo_email->email_id;
-                    $mongo_attachment->attachment_id = $attachment->id;
-                    $mongo_attachment->save();
-                }
-                unset($attachments);
             }
 
             // Manually clear memory for each batch
