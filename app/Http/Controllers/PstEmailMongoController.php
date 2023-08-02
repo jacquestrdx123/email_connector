@@ -12,7 +12,7 @@ class PstEmailMongoController extends Controller
 {
     public function index(Request $request)
     {
-        $email_query = DB::collection('pst_emails');
+        $email_query = PstEmail::query();
 
         $input = $request->all();
 
