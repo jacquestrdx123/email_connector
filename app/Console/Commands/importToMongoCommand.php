@@ -16,8 +16,10 @@ class importToMongoCommand extends Command
     {
         $emails = PstEmail::take(1000)->get()->toArray();
         foreach($emails as $email){
-//            $mongo_email = PstEmailMongo::create($email);
-//            $mongo_email->save();
+            $mongo_email = new PstEmailMongo();
+            dd($mongo_email);
+            $mongo_email->update($email);
+            $mongo_email->save();
         }
     }
 }
