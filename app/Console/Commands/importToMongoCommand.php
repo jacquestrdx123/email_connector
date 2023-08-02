@@ -16,7 +16,7 @@ class importToMongoCommand extends Command
 
     public function handle()
     {
-        $batchSize = 100; // Number of emails to process per batch
+        $batchSize = 1000; // Number of emails to process per batch
         $totalEmails = PstEmail::count();
         $totalBatches = ceil($totalEmails / $batchSize);
 
