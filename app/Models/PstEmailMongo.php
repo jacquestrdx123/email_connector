@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class PstEmailMongo extends Model
 {
     protected $connection = 'mongodb';
-    protected $table = 'pst_emails';
+    protected $collection = 'pst_emails';
 
     protected $fillable = [
         'folder_id',
