@@ -15,7 +15,7 @@ class PstEmailMongoController extends Controller
         $input = $request->all();
 
         config(['database.connections.mongodb.database' => $input['database'] ]);
-
+        DB::reconnect();
         $email_query = DB::connection('mongodb')->collection('pst_emails');
 
 
