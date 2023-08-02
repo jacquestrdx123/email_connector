@@ -6,12 +6,13 @@ use App\Http\Resources\PstEmailResource;
 use App\Models\PstEmail;
 use App\Models\PstEmailMongo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PstEmailMongoController extends Controller
 {
     public function index(Request $request)
     {
-        $email_query = PstEmailMongo::query();
+        $email_query = DB::collection('pst_emails');
 
         $input = $request->all();
 
