@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Resources\PstEmailResource;
 use App\Models\PstEmail;
 use App\Models\PstEmailMongo;
-use App\PoiContactNumber;
 use Illuminate\Http\Request;
 
 class PstEmailMongoController extends Controller
