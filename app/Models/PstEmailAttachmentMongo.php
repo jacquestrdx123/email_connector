@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model as Model;
 
 class PstEmailAttachmentMongo extends Model
 {
     protected $connection = 'mongodb';
+    protected $collection = 'pst_email_attachments';
     protected $fillable = [
         'email_id',
         'message_id',
