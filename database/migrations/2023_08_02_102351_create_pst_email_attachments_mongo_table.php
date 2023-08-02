@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up()
     {
-        Schema::create('pst_email_attachments', function (Blueprint $table) {
+        Schema::connection('mongodb')->create('pst_email_attachments', function (Blueprint $table) {
             $table->id();
             $table->integer('email_id')->nullable();
             $table->integer('message_id')->nullable();

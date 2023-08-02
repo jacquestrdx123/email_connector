@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up()
     {
-        Schema::create('pst_emails', function (Blueprint $table) {
+        Schema::connection('mongodb')->create('pst_emails', function (Blueprint $table) {
             $table->id();
             $table->integer('folder_id')->nullable();
             $table->integer('message_id')->nullable();
