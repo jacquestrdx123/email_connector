@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Models\PstEmail;
+use App\Models\PstEmailAttachment;
+use App\Models\PstEmailAttachmentMongo;
 use App\Models\PstEmailMongo;
 use Illuminate\Console\Command;
 
@@ -23,8 +25,15 @@ class importToMongoCommand extends Command
             $emails = PstEmail::skip($offset)->take($batchSize)->get();
 
             foreach ($emails as $email) {
+                $attachments = PstEmailAttachment::where('email_id',$email->id)->get();
                 $mongo_email = PstEmailMongo::create($email->toArray());
                 $mongo_email->save();
+                foreach($attachments as $attachment){
+                    $mongo_attachment = PstEmailAttachmentMongo::create($email->toArray());
+                    $mongo_attachment->email_id = $mongo_email->id;
+                    $mongo_attachment->save();
+
+                }
             }
 
             // Manually clear memory for each batch
