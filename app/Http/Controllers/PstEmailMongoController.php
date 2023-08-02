@@ -18,8 +18,6 @@ class PstEmailMongoController extends Controller
         DB::reconnect();
         $currentDatabaseName = DB::connection('mongodb')->getDatabaseName();
 
-        echo "Starting on Batch 1 using ".$currentDatabaseName."\n";
-        exit;
         $email_query = DB::connection('mongodb')->collection('pst_emails');
 
 
