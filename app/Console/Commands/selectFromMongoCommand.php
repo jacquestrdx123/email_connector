@@ -8,7 +8,7 @@ use Illuminate\Console\Command;
 
 class selectFromMongoCommand extends Command
 {
-    protected $signature = 'import:to-mongo';
+    protected $signature = 'mango:select';
 
     protected $description = 'Command description';
 
