@@ -14,11 +14,22 @@ class importToMongoCommand extends Command
 
     public function handle()
     {
-        $emails = PstEmail::get();
-        foreach($emails as $email){
-            $mongo_email = new PstEmailMongo();
-            $mongo_email->update($email->toArray());
-            $mongo_email->save();
+        $batchSize = 100; // Number of emails to process per batch
+        $totalEmails = PstEmail::count();
+        $totalBatches = ceil($totalEmails / $batchSize);
+
+        for ($batch = 1; $batch <= $totalBatches; $batch++) {
+            $offset = ($batch - 1) * $batchSize;
+            $emails = PstEmail::skip($offset)->take($batchSize)->get();
+
+            foreach ($emails as $email) {
+                $mongo_email = new PstEmailMongo();
+                $mongo_email->update($email->toArray());
+                $mongo_email->save();
+            }
+
+            // Manually clear memory for each batch
+            unset($emails);
         }
     }
 }
