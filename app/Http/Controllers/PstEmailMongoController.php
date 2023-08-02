@@ -12,10 +12,12 @@ class PstEmailMongoController extends Controller
 {
     public function index(Request $request)
     {
-        DB::connection('mongodb');
+        $input = $request->all();
+
+        config(['database.connections.mongodb.database' => $input['database'] ]);
+
         $email_query = DB::connection('mongodb')->collection('pst_emails');
 
-        $input = $request->all();
 
         if(array_key_exists('start_date',$input)){
             if(strlen($input['start_date'])){
