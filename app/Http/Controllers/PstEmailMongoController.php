@@ -173,12 +173,6 @@ class PstEmailMongoController extends Controller
             }
         }
 
-        $contact_emails = PoiContactNumber::get();
-
-        $contacts_array = array();
-        foreach($contact_emails as $contact_email){
-            $contacts_array[trim($contact_email->contact_details)] = $contact_email->poi_id;
-        }
         $emails = $email_query->orderBy('delivery_date','DESC')->limit(5000)->get();
         return response()->json($emails);
     }
