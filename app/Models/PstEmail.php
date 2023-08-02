@@ -28,4 +28,5 @@ class PstEmail extends Model
         'creation_date' => 'datetime',
         'delivery_date' => 'datetime',
     ];
+
 }
