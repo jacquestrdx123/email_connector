@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
-class PstEmailMongo extends Elequent
+use Jenssegers\Mongodb\Eloquent\Model as Model;
+
+class PstEmailMongo extends Model
 {
     protected $connection = 'mongodb';
     protected $collection = 'pst_emails';
