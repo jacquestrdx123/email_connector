@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::connection('mongodb')->create('pst_emails', function (Blueprint $table) {
             $table->id();
             $table->integer('folder_id')->nullable();
-            $table->integer('message_id')->nullable();
+            $table->integer('email_id')->nullable();
             $table->string('pst_name')->nullable();
             $table->string('body')->nullable();
             $table->string('folder_name')->nullable();
