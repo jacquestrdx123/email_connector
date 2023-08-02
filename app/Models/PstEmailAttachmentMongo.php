@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PstEmailAttachmentMongo extends Model
 {
+    protected $connection = 'mongodb';
     protected $fillable = [
         'email_id',
         'message_id',
