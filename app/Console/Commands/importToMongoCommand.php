@@ -33,6 +33,7 @@ class importToMongoCommand extends Command
                     $mongo_attachment->email_id = $mongo_email->id;
                     $mongo_attachment->save();
                 }
+                unset($attachments);
             }
 
             // Manually clear memory for each batch
