@@ -8,6 +8,7 @@ class PstEmailMongo extends Model
 {
     protected $connection = 'mongodb';
     protected $collection = 'pst_emails';
+    protected $table = 'pst_emails';
 
     protected $fillable = [
         'folder_id',
