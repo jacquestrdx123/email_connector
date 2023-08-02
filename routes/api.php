@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::resource('emails',\App\Http\Controllers\PstEmailMongoController::class);
+Route::resource('emails_mysql',\App\Http\Controllers\PstEmailController::class);
