@@ -14,6 +14,11 @@ class importToMongoCommand extends Command
 
     public function handle()
     {
+        $yourModelInstance = new PstEmailMongo();
+        if (!$yourModelInstance->getConnection()->active) {
+            $yourModelInstance->getConnection()->connect();
+        }
+
         $emails = PstEmail::take(1000)->get()->toArray();
         foreach($emails as $email){
             $mongo_email = new PstEmailMongo();
