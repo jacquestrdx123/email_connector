@@ -30,6 +30,7 @@ class importToMongoCommand extends Command
 
             // Manually clear memory for each batch
             unset($emails);
+            echo "Batch :".$batch." done \n";
         }
     }
 }
