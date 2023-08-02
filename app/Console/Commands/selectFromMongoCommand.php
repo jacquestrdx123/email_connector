@@ -15,6 +15,8 @@ class selectFromMongoCommand extends Command
     public function handle()
     {
         $emails = PstEmailMongo::get()->toArray();
-        dd($emails);
+        foreach($emails as $email){
+            dd($email);
+        }
     }
 }
