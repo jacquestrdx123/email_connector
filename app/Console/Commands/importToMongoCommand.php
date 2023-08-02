@@ -32,7 +32,6 @@ class importToMongoCommand extends Command
                     $mongo_attachment = PstEmailAttachmentMongo::create($email->toArray());
                     $mongo_attachment->email_id = $mongo_email->id;
                     $mongo_attachment->save();
-
                 }
             }
 
