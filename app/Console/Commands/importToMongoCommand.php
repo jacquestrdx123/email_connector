@@ -17,12 +17,12 @@ class importToMongoCommand extends Command
     public function handle()
     {
         $batchSize = 1000; // Number of emails to process per batch
-        $totalEmails = PstEmail::count();
+        $totalEmails = PstEmail::where('pst_name','ElmonMndawe.pst')->count();
         $totalBatches = ceil($totalEmails / $batchSize);
 
         for ($batch = 1; $batch <= $totalBatches; $batch++) {
             $offset = ($batch - 1) * $batchSize;
-            $emails = PstEmail::skip($offset)->take($batchSize)->get();
+            $emails = PstEmail::where('pst_name','ElmonMndawe.pst')->skip($offset)->take($batchSize)->get();
 
             foreach ($emails as $email) {
                 $mongo_email = PstEmailMongo::create($email->toArray());
