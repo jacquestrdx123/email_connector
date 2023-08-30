@@ -88,18 +88,6 @@ return [
             'search_path' => 'public',
             'sslmode' => 'prefer',
         ],
-        'elasticsearch' => [
-            'driver' => 'elasticsearch',
-            'hosts' => [
-                [
-                    'host' => env('ELASTICSEARCH_HOSTS', 'localhost'),
-                    'port' => env('ELASTICSEARCH_PORT', 9200),
-                    'scheme' => env('ELASTICSEARCH_SCHEME', null),
-                    'user' => env('ELASTICSEARCH_USER', null),
-                    'pass' => env('ELASTICSEARCH_PASS', null),
-                ],
-            ],
-        ],
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
