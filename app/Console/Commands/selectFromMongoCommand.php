@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\PstEmail;
 use App\Models\PstEmailMongo;
+use Elastic\Elasticsearch\ClientBuilder;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -16,11 +17,13 @@ class selectFromMongoCommand extends Command
     public function handle()
     {
 
-        config(['database.connections.mongodb.database' => $this->argument('database') ]);
-        DB::reconnect();
-        $emails = PstEmailMongo::get()->toArray();
-        foreach($emails as $email){
-            dd($email);
-        }
+        $client = ClientBuilder::create()
+            ->setHosts([ 'http://'.env('ELASTICSEARCH_HOST').':'.env('ELASTICSEARCH_PORT') ])
+            ->setBasicAuthentication(env('ELASTICSEARCH_USER'), env('ELASTICSEARCH_PASS'))
+            ->build();
+        $response = $client->info();
+
+        dd($response->getStatusCode());
+
     }
 }
