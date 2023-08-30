@@ -19,7 +19,7 @@ class selectFromMongoCommand extends Command
 
         $client = ClientBuilder::create()
             ->setHosts([ env('ELASTICSEARCH_HOST') ])
-            ->setBasicAuthentication(env('ELASTICSEARCH_USER'), env('ELASTICSEARCH_PASS'))
+            ->setBasicAuthentication(env('ELASTICSEARCH_USER'), env('ELASTICSEARCH_PASSWORD'))
             ->build();
         $response = $client->info();
 
