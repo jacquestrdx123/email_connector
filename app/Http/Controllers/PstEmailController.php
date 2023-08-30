@@ -12,7 +12,7 @@ class PstEmailController extends Controller
     public function index(Request $request)
     {
 
-        $email_query = PstEmail::take(250);
+        $email_query = PstEmail::take(250)->get();
         return response()->json( $email_query);
     }
 
