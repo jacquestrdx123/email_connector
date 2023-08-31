@@ -20,6 +20,6 @@ class SearchEmails extends Command
             // this will not be triggered
         })->get();
 
-        return $pst_emails;
+        return response()->json( $pst_emails );
     }
 }
